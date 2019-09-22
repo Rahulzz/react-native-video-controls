@@ -654,7 +654,7 @@ export default class VideoPlayer extends Component {
      * we have to handle possible props changes to state changes
      */
     static getDerivedStateFromProps(nextProps, prevState) {
-        if (prevState.paused !== nextProps.paused && this.state.paused !== nextProps.paused && typeof nextProps.paused === "undefined") {
+        if (prevState.paused !== nextProps.paused) {
             this.setState({
                 paused: nextProps.paused
             })
