@@ -655,11 +655,10 @@ export default class VideoPlayer extends Component {
      */
     static getDerivedStateFromProps(nextProps, prevState) {
         if (prevState.paused !== nextProps.paused) {
-            this.setState({
+            return ({
                 paused: nextProps.paused
-            })
+            });
         }
-        return null;
     }
 
     /**
