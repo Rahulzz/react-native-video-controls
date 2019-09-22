@@ -316,18 +316,18 @@ export default class VideoPlayer extends Component {
                 this.animations.topControl.opacity,
                 { toValue: 0 }
             ),
-            Animated.timing(
-                this.animations.topControl.marginTop,
-                { toValue: -100 }
-            ),
+            //Animated.timing(
+                //this.animations.topControl.marginTop,
+                //{ toValue: -100 }
+            //),
             Animated.timing(
                 this.animations.bottomControl.opacity,
                 { toValue: 0 }
             ),
-            Animated.timing(
-                this.animations.bottomControl.marginBottom,
-                { toValue: -100 }
-            ),
+            //Animated.timing(
+                //this.animations.bottomControl.marginBottom,
+                //{ toValue: -100 }
+            //),
         ]).start();
     }
 
@@ -342,18 +342,18 @@ export default class VideoPlayer extends Component {
                 this.animations.topControl.opacity,
                 { toValue: 1 }
             ),
-            Animated.timing(
-                this.animations.topControl.marginTop,
-                { toValue: 0 }
-            ),
+            //Animated.timing(
+                //this.animations.topControl.marginTop,
+                //{ toValue: 0 }
+            //),
             Animated.timing(
                 this.animations.bottomControl.opacity,
                 { toValue: 1 }
             ),
-            Animated.timing(
-                this.animations.bottomControl.marginBottom,
-                { toValue: 0 }
-            ),
+            //Animated.timing(
+                //this.animations.bottomControl.marginBottom,
+                //{ toValue: 0 }
+            //),
         ]).start();
     }
 
@@ -666,17 +666,17 @@ export default class VideoPlayer extends Component {
      * Before mounting, init our seekbar and volume bar
      * pan responders.
      */
-    componentWillMount() {
-        this.initSeekPanResponder();
-        this.initVolumePanResponder();
-    }
+    //componentWillMount() {
+        //this.initSeekPanResponder();
+        //this.initVolumePanResponder();
+    //}
 
     /**
      * To allow basic playback management from the outside
      * we have to handle possible props changes to state changes
      */
-    componentWillReceiveProps(nextProps) {
-        if (this.state.paused !== nextProps.paused ) {
+    getDerivedStateFromProps(nextProps, prevState) {
+        if (prevState.paused !== nextProps.paused && this.state.paused !== nextProps.paused ) {
             this.setState({
                 paused: nextProps.paused
             })
@@ -688,6 +688,8 @@ export default class VideoPlayer extends Component {
      * bar based on the volume property supplied to it.
      */
     componentDidMount() {
+        this.initSeekPanResponder();
+        this.initVolumePanResponder();
         const position = this.calculateVolumePositionFromVolume();
         let state = this.state;
         this.setVolumePosition( position );
