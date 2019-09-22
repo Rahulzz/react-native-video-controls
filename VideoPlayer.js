@@ -659,7 +659,7 @@ export default class VideoPlayer extends Component {
                 paused: nextProps.paused
             })
         }
-        return null;
+        return nextProps;
     }
 
     /**
