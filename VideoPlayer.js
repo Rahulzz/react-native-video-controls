@@ -653,12 +653,12 @@ export default class VideoPlayer extends Component {
      * To allow basic playback management from the outside
      * we have to handle possible props changes to state changes
      */
-    static getDerivedStateFromProps(nextProps, prevState) {
-        let paused = null;
-        if (prevState.paused !== nextProps.paused) {
-            paused = { paused: nextProps.paused };
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.paused !== prevProps.paused ) {
+            this.setState({
+                paused: this.props.paused
+            })
         }
-        return paused;
     }
 
     /**
